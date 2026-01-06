@@ -1,0 +1,8 @@
+{
+  "12h-u": { "price": 65, "hours": 12, "label": "12h Universidad" },
+  "24h-u": { "price": 120, "hours": 24, "label": "24h Universidad" },
+  "48h-u": { "price": 220, "hours": 48, "label": "48h Universidad" },
+  "12h-b": { "price": 55, "hours": 12, "label": "12h Básica" },
+  "24h-b": { "price": 100, "hours": 24, "label": "24h Básica" },
+  "48h-b": { "price": 190, "hours": 48, "label": "48h Básica" }
+}

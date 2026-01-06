@@ -1,26 +1,145 @@
 @import "tailwindcss";
 
+/* =========================
+   Tema por defecto: AZUL (mejor contraste / más profesional)
+   ========================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ✅ En azul: texto base neutro (no “azul”), para que no se vea feo */
+  --foreground-rgb: 12, 22, 40;
+
+  /* Fondo azul un poco más sobrio */
+  --background-start-rgb: 150, 210, 255;
+  --background-end-rgb: 240, 248, 255;
+
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ✅ No tocar: tu tema oscuro ya quedó bien */
+.dark {
+  --foreground-rgb: 245, 247, 250;
+  --background-start-rgb: 10, 12, 16;
+  --background-end-rgb: 0, 0, 0;
+
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* ✅ Ajuste: foreground más neutro para el azul */
+    --background: 205 100% 88%;
+    --foreground: 222 47% 12%;
+
+    /* Tarjetas con un blanco azulado sutil */
+    --card: 205 100% 98%;
+    --card-foreground: 222 47% 12%;
+
+    --popover: 205 100% 98%;
+    --popover-foreground: 222 47% 12%;
+
+    /* Primary: azul más serio */
+    --primary: 208 95% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 205 100% 92%;
+    --secondary-foreground: 222 47% 12%;
+
+    --muted: 205 100% 92%;
+    --muted-foreground: 215 16% 38%;
+
+    --accent: 205 100% 92%;
+    --accent-foreground: 222 47% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Bordes más suaves */
+    --border: 205 80% 76%;
+    --input: 205 80% 76%;
+    --ring: 208 95% 35%;
+
+    --radius: 0.75rem;
+  }
+
+  /* =========================
+     Tema oscuro (NO MODIFICAR)
+     ========================= */
+  .dark {
+    --background: 222 24% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 24% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 24% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 24% 10%;
+
+    --secondary: 215 19% 16%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 19% 16%;
+    --muted-foreground: 215 20% 70%;
+
+    --accent: 215 19% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 19% 18%;
+    --input: 215 19% 18%;
+    --ring: 215 20% 75%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Fondo “animalista” azul (huellitas) */
+.animal-bg {
+  background:
+    radial-gradient(circle at 20px 20px, rgba(2, 132, 199, 0.14) 2px, transparent 3px) 0 0 / 60px 60px,
+    radial-gradient(circle at 35px 35px, rgba(2, 132, 199, 0.10) 2px, transparent 3px) 0 0 / 60px 60px,
+    linear-gradient(
+      180deg,
+      rgba(var(--background-start-rgb), 0.98),
+      rgba(var(--background-end-rgb), 0.98)
+    );
+}
+
+.dark .animal-bg {
+  background:
+    radial-gradient(circle at 20px 20px, rgba(255,255,255,0.07) 2px, transparent 3px) 0 0 / 60px 60px,
+    radial-gradient(circle at 35px 35px, rgba(255,255,255,0.05) 2px, transparent 3px) 0 0 / 60px 60px,
+    linear-gradient(
+      180deg,
+      rgba(var(--background-start-rgb), 0.98),
+      rgba(var(--background-end-rgb), 0.98)
+    );
+}
+
+/* =========================================================
+   FIX SELECT/OPTIONS — SOLO TEMA AZUL
+   (Oscuro se mantiene como ya estaba bien)
+   ========================================================= */
+
+/* ✅ En azul: select con texto neutro (no azul) */
+select {
+  color: rgb(12, 22, 40);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(160, 200, 235, 0.9);
+}
+
+/* ✅ Opciones: fondo blanco, texto neutro */
+select option {
+  background-color: #ffffff;
+  color: rgb(12, 22, 40);
+}
+
+/* ✅ Mantener oscuro tal cual (NO CAMBIO) */
+.dark select {
+  color: rgb(245, 247, 250);
+}
+.dark select option {
+  background-color: rgb(15, 23, 42);
+  color: rgb(245, 247, 250);
 }

@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:3000
+@json = Content-Type: application/json
+
+### 1) Ver planes
+GET {{baseUrl}}/api/plans
+
+### 2) Listar todos los clientes
+GET {{baseUrl}}/api/clients
+
+### 3) Crear cliente
+POST {{baseUrl}}/api/clients
+{{json}}
+
+{
+  "name": "Ana Samaniego",
+  "dni": "0601112223",
+  "representative": "",
+  "representative_dni": "",
+  "email": "ana@example.com",
+  "address": "Riobamba",
+  "phone": "0988887777",
+  "plan": "24h-b",
+  "abono": 10,
+  "hours": 0
+}
+
+### 4) Obtener 1 cliente por id
+GET {{baseUrl}}/api/clients/2
+
+### 5) Actualizar cliente (NO horas)
+PUT {{baseUrl}}/api/clients/1
+{{json}}
+
+{
+  "address": "Riobamba - Centro",
+  "abono": 25.5,
+  "plan": "12h-u"
+}
+
+### 6) Registrar horas (+1 por click)
+POST {{baseUrl}}/api/clients/1/hours
+{{json}}
+
+{
+  "delta": 1
+}
+
+### 7) Eliminar cliente
+DELETE {{baseUrl}}/api/clients/1
